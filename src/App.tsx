@@ -2,7 +2,7 @@ import React from 'react';
 import 'react-native-gesture-handler';
 import * as eva from '@eva-design/eva';
 import {ApplicationProvider} from '@ui-kitten/components';
-import Home from '@src/screens/Home';
+import Home from '@/screens/Home';
 
 function App() {
   return (
