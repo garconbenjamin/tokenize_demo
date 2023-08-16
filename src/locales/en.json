@@ -1,0 +1,17 @@
+{
+  "sign_up": "sign up",
+  "sign_in": "sign in",
+  "markets": "markets",
+  "home": "home",
+  "wallets": "wallets",
+  "porfolio": "porfolio",
+  "more": "more",
+  "signIn": {
+    "email": "Email",
+    "password": "Password",
+
+    "forgot_password": "Forgot your password?",
+    "remember": "Remember me",
+    "sign_up_note": "Don’t have an account yet?"
+  }
+}
