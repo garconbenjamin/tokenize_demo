@@ -12,6 +12,7 @@
 
     "forgot_password": "Forgot your password?",
     "remember": "Remember me",
+    "sing_in_note": "Please sign in to continue",
     "sign_up_note": "Don’t have an account yet?"
   }
 }
