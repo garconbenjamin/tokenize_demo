@@ -1,10 +1,9 @@
 import React from 'react';
-import 'react-native-gesture-handler';
-import {Layout, Text} from '@ui-kitten/components';
+import {Text, View} from 'react-native';
 
 const HomeScreen = () => (
-  <Layout style={{flex: 1, justifyContent: 'center', alignItems: 'center'}}>
-    <Text category="h1">HOME</Text>
-  </Layout>
+  <View style={{flex: 1, justifyContent: 'center', alignItems: 'center'}}>
+    <Text>HOME</Text>
+  </View>
 );
 export default HomeScreen;
