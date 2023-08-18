@@ -10,17 +10,16 @@ import {SafeAreaView} from 'react-native';
 import {Button, Text, Input} from '@rneui/themed';
 import Logo from '@/images/logo.svg';
 import PasswordInput from '@/components/PasswordInput';
-import {getDeviceId, getUserAgent} from 'react-native-device-info';
+import {getUniqueId, getUserAgent} from 'react-native-device-info';
 const Auth = () => {
   const navigation = useNavigation<RootScreenProps>();
   const {t} = useTranslation();
   const [email, setEmail] = useState('tokenize.test@gmail.com');
   const [password, setPassword] = useState('Test#111');
   const handleSignIn = async () => {
-    const deviceId = getDeviceId();
     const userAgent = await getUserAgent();
-    console.log('deviceId', deviceId);
-    console.log('userAgent', userAgent);
+    const uniqueId = await getUniqueId();
+
     const res = await fetch(
       'https://api.tokenize-dev.com/mobile-api/auth/login',
       {
@@ -28,8 +27,8 @@ const Auth = () => {
         headers: {
           Accept: 'application/json, text/plain, */*',
           'Content-Type': 'application/json;charset=utf-8',
-          'user-agent': 'Android;1.15.0',
-          'TOK-DEVICE-ID': 'ea278b7741967a5e',
+          'user-agent': userAgent,
+          'TOK-DEVICE-ID': uniqueId,
         },
         body: JSON.stringify({
           email,
@@ -40,7 +39,7 @@ const Auth = () => {
       },
     );
     if (res.status === 200) {
-      navigation.replace(RootScreenType.MAIN);
+      navigation.push(RootScreenType.MAIN);
     }
   };
   return (
