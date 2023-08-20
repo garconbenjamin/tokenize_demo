@@ -1,11 +1,10 @@
-/* eslint-disable @typescript-eslint/no-unused-vars */
 import React, {useState} from 'react';
-import {FlatList, SafeAreaView} from 'react-native';
+import {FlatList, SafeAreaView, RefreshControl} from 'react-native';
 import {View} from 'react-native';
 import useFetch from '@/hooks/useFetch';
 import {ScrollView} from 'react-native-gesture-handler';
-import {Text, Card, Button, Image, Skeleton} from '@rneui/themed';
-
+import {Text, Card, Button, Skeleton} from '@rneui/themed';
+import FastImage from 'react-native-fast-image';
 type Symbol = {
   id: number;
   marketId: string;
@@ -111,10 +110,11 @@ const MarketCard = (props: {item: Symbol; price?: Price}) => {
         marginVertical: 10,
       }}>
       <View style={{flexDirection: 'row'}}>
-        <Image
-          containerStyle={{width: 38, height: 38, marginRight: 15}}
+        <FastImage
+          style={{width: 38, height: 38, marginRight: 15}}
           source={{
             uri: `https://tokenize-dev.com/assets/images/currency-logos/${item.marketCurrency.toLocaleLowerCase()}.png`,
+            priority: FastImage.priority.normal,
           }}
         />
         <View>
@@ -134,8 +134,6 @@ const MarketCard = (props: {item: Symbol; price?: Price}) => {
             }}>
             {item.marketCurrencyLong}
           </Text>
-
-          {/* <Text>{JSON.stringify(item)}</Text> */}
         </View>
 
         {
@@ -154,48 +152,26 @@ const MarketCard = (props: {item: Symbol; price?: Price}) => {
 };
 function Markets() {
   const [tabIndex, setTabIndex] = useState(0);
-  console.log('tabIndex', tabIndex);
 
-  const {
-    data: market,
-
-    loading: marketLoading,
-    error: marketError,
-  } = useFetch<{data: Market[]}>(
+  const {data: market, loading: marketLoading} = useFetch<{data: Market[]}>(
     'https://api.tokenize-dev.com/mobile-api/market/getmarkets',
-    {
-      headers: {
-        Accept: 'application/json, text/plain, */*',
-        'Content-Type': 'application/json;charset=utf-8',
-        'user-agent': 'Android;1.15.0',
-        'TOK-DEVICE-ID': 'ea278b7741967a5e',
-      },
-    },
   );
-  // console.log('market', market);
-  const {
-    data: price,
-    loading: priceLoading,
-    error: priceError,
-    // refetch,
-  } = useFetch<{data: Price[]}>(
+
+  const {data: price, refetch} = useFetch<{data: Price[]}>(
     'https://api.tokenize-dev.com/public/v1/market/get-summaries',
-    {
-      headers: {
-        Accept: 'application/json, text/plain, */*',
-        'Content-Type': 'application/json;charset=utf-8',
-        'user-agent': 'Android;1.15.0',
-        'TOK-DEVICE-ID': 'ea278b7741967a5e',
-      },
-    },
   );
-  // console.log('price', price);
+
   const marketData = market?.data ?? [];
   const priceDataMap: Record<string, Price> = {};
   price?.data.forEach(item => {
     priceDataMap[item.market] = item;
   });
   const [refreshing, setRefreshing] = useState(false);
+  const onRefresh = async () => {
+    setRefreshing(true);
+    await refetch();
+    setRefreshing(false);
+  };
   return (
     <SafeAreaView
       style={{
@@ -216,8 +192,9 @@ function Markets() {
         <FlatList
           style={{width: '100%'}}
           data={marketData[tabIndex]?.list.sort((a, b) => a.id - b.id) || []}
-          // onRefresh={refetch}
-          refreshing={refreshing}
+          refreshControl={
+            <RefreshControl refreshing={refreshing} onRefresh={onRefresh} />
+          }
           ListFooterComponent={
             <Footer loading={marketLoading} dataLength={marketData.length} />
           }
