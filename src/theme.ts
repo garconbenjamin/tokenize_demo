@@ -29,6 +29,7 @@ const theme = createTheme({
         paddingBottom: 14,
       },
     },
+    Card: {wrapperStyle: {borderRadius: 8}},
   },
 });
 export default theme;

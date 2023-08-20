@@ -22,12 +22,12 @@ function App() {
           }}
           id="Root">
           <RootStack.Screen
-            name={RootScreenType.AUTHENTICATION}
-            component={Auth}
-          />
-          <RootStack.Screen
             name={RootScreenType.MAIN}
             component={TabNavigator}
+          />
+          <RootStack.Screen
+            name={RootScreenType.AUTHENTICATION}
+            component={Auth}
           />
         </RootStack.Navigator>
       </NavigationContainer>

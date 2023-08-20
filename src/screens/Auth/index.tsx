@@ -11,11 +11,12 @@ import {Button, Text, Input} from '@rneui/themed';
 import Logo from '@/images/logo.svg';
 import PasswordInput from '@/components/PasswordInput';
 import {getUniqueId, getUserAgent} from 'react-native-device-info';
+import {TEST_DATA} from '@/constants';
 const Auth = () => {
   const navigation = useNavigation<RootScreenProps>();
   const {t} = useTranslation();
-  const [email, setEmail] = useState('tokenize.test@gmail.com');
-  const [password, setPassword] = useState('Test#111');
+  const [email, setEmail] = useState(TEST_DATA.email);
+  const [password, setPassword] = useState(TEST_DATA.password);
   const handleSignIn = async () => {
     const userAgent = await getUserAgent();
     const uniqueId = await getUniqueId();

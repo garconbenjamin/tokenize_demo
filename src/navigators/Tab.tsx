@@ -11,7 +11,8 @@ function TabNavigator() {
     <Tab.Navigator
       screenOptions={{
         headerShown: false,
-      }}>
+      }}
+      initialRouteName={TabScreenType.MARKETS}>
       <Tab.Screen name={TabScreenType.HOME} component={EmptyScreen} />
       <Tab.Screen name={TabScreenType.MARKETS} component={Markets} />
       <Tab.Screen name={TabScreenType.WALLETS} component={EmptyScreen} />
