@@ -1,17 +1,17 @@
 import React from 'react';
 import {useRoute} from '@react-navigation/native';
-import {Layout, Text} from '@ui-kitten/components';
+import {View, Text} from 'react-native';
 import {SafeAreaView} from 'react-native-safe-area-context';
 
 const EmptyScreen = () => {
   const route = useRoute();
 
   return (
-    <Layout>
+    <View>
       <SafeAreaView>
         <Text>{route.name}</Text>
       </SafeAreaView>
-    </Layout>
+    </View>
   );
 };
 export default EmptyScreen;
