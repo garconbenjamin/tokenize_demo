@@ -5,7 +5,6 @@ import Header from './Header';
 import MarketCard from './MarketCard';
 import {Market, Price} from '@/types/market';
 import Footer from './Footer';
-import {useAppSelector} from '@/store/hook';
 
 function Markets() {
   const [tabIndex, setTabIndex] = useState(0);
@@ -23,8 +22,7 @@ function Markets() {
   price?.data.forEach(item => {
     priceDataMap[item.market] = item;
   });
-  const user = useAppSelector(state => state.user);
-  console.log('user', user);
+
   const onRefresh = async () => {
     setRefreshing(true);
     await refetch();
