@@ -12,6 +12,8 @@ import Logo from '@/images/logo.svg';
 import PasswordInput from '@/components/PasswordInput';
 import {getUniqueId, getUserAgent} from 'react-native-device-info';
 import {TEST_DATA} from '@/constants';
+import {setUser} from '@/store/actions';
+import {User} from '@/types/user';
 const Auth = () => {
   const navigation = useNavigation<RootScreenProps>();
   const {t} = useTranslation();
@@ -42,6 +44,9 @@ const Auth = () => {
     if (res.status === 200) {
       navigation.push(RootScreenType.MAIN);
     }
+    const userData = await res.json();
+
+    setUser(userData.data as User);
   };
   return (
     <View style={{flex: 1}}>
