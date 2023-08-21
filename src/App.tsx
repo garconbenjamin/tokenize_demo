@@ -15,6 +15,7 @@ function App() {
     const intializeConfig = async () => {
       const userAgent = await getUserAgent();
       const deviceId = await getUniqueId();
+
       setConfig({userAgent, deviceId});
     };
     intializeConfig();

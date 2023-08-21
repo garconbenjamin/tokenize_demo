@@ -1,4 +1,6 @@
 import {useEffect, useRef, useState, useCallback} from 'react';
+import clientFetch from '@/utils/clientFetch';
+
 type Cache<T> = {[url: string]: T};
 
 function useFetch<T = unknown>(
@@ -22,7 +24,7 @@ function useFetch<T = unknown>(
     cancelRequest.current = false;
     try {
       setLoading(true);
-      const response = await fetch(url, options);
+      const response = await clientFetch(url, options);
 
       if (!response.ok) {
         throw new Error(response.statusText);
