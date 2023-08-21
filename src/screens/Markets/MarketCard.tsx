@@ -4,22 +4,33 @@ import {Text, Card} from '@rneui/themed';
 import FastImage from 'react-native-fast-image';
 import {Symbol, Price} from '@/types/market';
 import Arrow from '@/images/arrow.svg';
+
+const getPropertyByPrice = (lastPrice: number = 0, openPrice: number = 0) => {
+  let priceChange;
+  let priceChangeText;
+
+  priceChange = (lastPrice - openPrice) / openPrice;
+  if (Number.isNaN(priceChange)) {
+    priceChange = 0;
+  }
+
+  priceChangeText = priceChange.toFixed(2);
+  if (priceChangeText === '-0.00') {
+    priceChangeText = '0.00';
+  }
+
+  return {
+    currentPrice: lastPrice?.toFixed(8) || '--',
+    priceColor: Number(priceChangeText) < 0 ? '#F94B5C' : '#3BBA7D',
+    showArrow: Number(priceChangeText) !== 0,
+    priceChangeText,
+    rotateDeg: priceChange > 0 ? '0deg' : '180deg',
+  };
+};
 function MarketCard(props: {item: Symbol; price?: Price}) {
   const {item, price} = props;
-
-  let priceChangeText = '0',
-    priceChange = 0,
-    currentPrice = '--';
-  if (price) {
-    const {lastPrice, openPrice} = price;
-    currentPrice = lastPrice.toFixed(8);
-    priceChange = (lastPrice - openPrice) / openPrice;
-    if (Number.isNaN(priceChange)) {
-      priceChange = 0;
-    }
-    priceChangeText = priceChange.toFixed(2);
-  }
-  const priceColor = priceChange > 0 ? '#3BBA7D' : '#F94B5C';
+  const {currentPrice, priceColor, priceChangeText, rotateDeg, showArrow} =
+    getPropertyByPrice(price?.lastPrice, price?.openPrice);
   return (
     <Card
       containerStyle={{
@@ -68,16 +79,18 @@ function MarketCard(props: {item: Symbol; price?: Price}) {
             <Text>{currentPrice}</Text>
             <Text style={{color: priceColor, fontWeight: '500'}}>
               {priceChangeText}%
-              <Arrow
-                style={{
-                  transform: [
-                    {
-                      rotate: priceChange > 0 ? '0deg' : '180deg',
-                    },
-                  ],
-                }}
-                fill={priceColor}
-              />
+              {showArrow && (
+                <Arrow
+                  style={{
+                    transform: [
+                      {
+                        rotate: rotateDeg,
+                      },
+                    ],
+                  }}
+                  fill={priceColor}
+                />
+              )}
             </Text>
           </View>
         }
