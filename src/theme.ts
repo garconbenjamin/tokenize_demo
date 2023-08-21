@@ -13,6 +13,7 @@ const theme = createTheme({
       },
       placeholderTextColor: '#D6E1FF',
       leftIconContainerStyle: {paddingLeft: 14, paddingRight: 9},
+      errorStyle: {height: 0},
     },
     Button: {
       radius: 6,
