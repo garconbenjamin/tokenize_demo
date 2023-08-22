@@ -1,10 +1,13 @@
 module.exports = {
   root: true,
-  extends: '@react-native',
-  plugins: ['import', 'simple-import-sort'],
+  extends: ['@react-native/eslint-config'],
+
+  plugins: ['import', 'simple-import-sort', 'jest'],
+  env: {
+    'jest/globals': true,
+  },
   rules: {
     'react-native/no-inline-styles': 0,
-    useUnknownInCatchVariables: 0,
     'no-use-before-define': 'off',
 
     'no-underscore-dangle': [2, { allowAfterThis: true }],

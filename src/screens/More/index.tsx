@@ -1,5 +1,5 @@
 import React from 'react';
-import { SafeAreaView, View } from 'react-native';
+import { SafeAreaView } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 import { Button, Text } from '@rneui/themed';
 import { clearUser } from '@/store/actions';
