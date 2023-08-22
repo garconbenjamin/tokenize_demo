@@ -1,7 +1,7 @@
 import React from 'react';
-import { SafeAreaView, Text } from 'react-native';
+import { SafeAreaView, View } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
-import { Button } from '@rneui/themed';
+import { Button, Text } from '@rneui/themed';
 import { clearUser } from '@/store/actions';
 import { RootScreenProps, RootScreenType } from '@/types/navigators';
 
@@ -15,9 +15,14 @@ function More() {
     });
   };
   return (
-    <SafeAreaView style={{ flex: 1 }}>
-      <Text>More</Text>
-      <Button onPress={handleSignOut}>Sign out</Button>
+    <SafeAreaView
+      style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}
+    >
+      <Text h1>More</Text>
+
+      <Button style={{ width: '100%' }} onPress={handleSignOut}>
+        Sign out
+      </Button>
     </SafeAreaView>
   );
 }
