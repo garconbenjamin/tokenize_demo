@@ -1,16 +1,17 @@
-import React, {useState} from 'react';
+import React, { useState } from 'react';
+import { View } from 'react-native';
+import { Button, Input, InputProps } from '@rneui/themed';
 
-import {Input, InputProps, Button} from '@rneui/themed';
 import EyeIcon from '@/images/eye_icon.svg';
-import {View} from 'react-native';
 
-const EyeToggler = (props: {show: boolean}) => (
+const EyeToggler = (props: { show: boolean }) => (
   <View
     style={{
       position: 'relative',
       justifyContent: 'center',
       alignItems: 'center',
-    }}>
+    }}
+  >
     <EyeIcon fill="white" />
     {props.show && (
       <View
@@ -19,7 +20,7 @@ const EyeToggler = (props: {show: boolean}) => (
           backgroundColor: 'white',
           width: '150%',
           height: 2,
-          transform: [{rotate: '-45deg'}],
+          transform: [{ rotate: '-45deg' }],
         }}
       />
     )}
@@ -39,7 +40,8 @@ function PasswordInput(
       rightIcon={
         <Button
           onPress={toggleSecureEntry}
-          buttonStyle={{backgroundColor: 'transparent'}}>
+          buttonStyle={{ backgroundColor: 'transparent' }}
+        >
           <EyeToggler show={secureTextEntry} />
         </Button>
       }
