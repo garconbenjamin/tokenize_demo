@@ -95,10 +95,10 @@ cd ios && pod install
 
 ## Live screenshots
 
-![Demo1]([http://static.runoob.com/images/runoob-logo.png](https://github.com/garconbenjamin/tokenize_demo/blob/master/demo_screenshot/demo1.png?raw=true))
+![Demo1](https://github.com/garconbenjamin/tokenize_demo/blob/master/demo_screenshot/demo1.png?raw=true)
 
-![Demo2]([http://static.runoob.com/images/runoob-logo.png](https://github.com/garconbenjamin/tokenize_demo/blob/master/demo_screenshot/demo2.png?raw=true))
+![Demo2](https://github.com/garconbenjamin/tokenize_demo/blob/master/demo_screenshot/demo2.png?raw=true)
 
-![Demo3]([http://static.runoob.com/images/runoob-logo.png](https://github.com/garconbenjamin/tokenize_demo/blob/master/demo_screenshot/demo3.png?raw=true))
+![Demo3](https://github.com/garconbenjamin/tokenize_demo/blob/master/demo_screenshot/demo3.png?raw=true)
 
-![Demo4]([http://static.runoob.com/images/runoob-logo.png](https://github.com/garconbenjamin/tokenize_demo/blob/master/demo_screenshot/demo4.png?raw=true))
+![Demo4](https://github.com/garconbenjamin/tokenize_demo/blob/master/demo_screenshot/demo4.png?raw=true)
