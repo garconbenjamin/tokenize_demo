@@ -1,8 +1,8 @@
-import {HEADERS} from '@/constants';
+import { HEADERS } from '@/constants';
 import store from '@/store';
 
 const clientFetch = async (url: string, options: RequestInit = {}) => {
-  const {userAgent, deviceId} = store.getState().config;
+  const { userAgent, deviceId } = store.getState().config;
 
   return fetch(url, {
     headers: {

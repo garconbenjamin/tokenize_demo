@@ -1,7 +1,7 @@
-import {useEffect, useRef, useState, useCallback} from 'react';
+import { useCallback, useEffect, useRef, useState } from 'react';
 import clientFetch from '@/utils/clientFetch';
 
-type Cache<T> = {[url: string]: T};
+type Cache<T> = { [url: string]: T };
 
 function useFetch<T = unknown>(
   url: string,
@@ -55,7 +55,7 @@ function useFetch<T = unknown>(
     };
   }, [fetchData]);
 
-  return {data, loading, error, refetch: fetchData};
+  return { data, loading, error, refetch: fetchData };
 }
 
 export default useFetch;

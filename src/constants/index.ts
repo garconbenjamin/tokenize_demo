@@ -11,4 +11,4 @@ const TEST_DATA = {
   password: 'Test#111',
 };
 
-export {HEADERS, TEST_DATA, CAPTCHA};
+export { HEADERS, TEST_DATA, CAPTCHA };

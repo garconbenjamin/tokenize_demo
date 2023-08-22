@@ -1,5 +1,4 @@
-import {combineReducers} from 'redux';
-
+import { combineReducers } from 'redux';
 import configReducer from '@/store/reducers/config';
 import userReducer from '@/store/reducers/user';
 

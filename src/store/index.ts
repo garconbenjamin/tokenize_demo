@@ -1,10 +1,9 @@
-import {Action, configureStore, ThunkAction} from '@reduxjs/toolkit';
-
+import { Action, configureStore, ThunkAction } from '@reduxjs/toolkit';
 import rootReducer from '@/store/reducers/rootReducer';
 
 const store = configureStore({
   reducer: rootReducer,
-  middleware: getDefaultMiddleware =>
+  middleware: (getDefaultMiddleware) =>
     getDefaultMiddleware({
       serializableCheck: false,
     }),
@@ -12,7 +11,7 @@ const store = configureStore({
 
 export default store;
 
-export const {dispatch} = store;
+export const { dispatch } = store;
 
 export type AppDispatch = typeof store.dispatch;
 export type RootState = ReturnType<typeof store.getState>;

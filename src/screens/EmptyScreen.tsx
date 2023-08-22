@@ -1,7 +1,7 @@
 import React from 'react';
-import {useRoute} from '@react-navigation/native';
-import {View, Text} from 'react-native';
-import {SafeAreaView} from 'react-native-safe-area-context';
+import { Text, View } from 'react-native';
+import { SafeAreaView } from 'react-native-safe-area-context';
+import { useRoute } from '@react-navigation/native';
 
 const EmptyScreen = () => {
   const route = useRoute();
