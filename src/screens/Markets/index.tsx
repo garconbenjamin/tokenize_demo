@@ -1,5 +1,6 @@
 import React, { useEffect, useRef, useState } from 'react';
 import { FlatList, RefreshControl, SafeAreaView, View } from 'react-native';
+import { DOLLAR_SIGN } from '@/constants';
 import useFetch from '@/hooks/useFetch';
 import { Market, Price } from '@/types/market';
 import Footer from './Footer';
@@ -28,6 +29,9 @@ function Markets() {
     await refetch();
     setRefreshing(false);
   };
+  const handleTabChange = (index: number) => {
+    setTabIndex(index);
+  };
   const flatList = useRef<FlatList>(null);
   const flatListData =
     marketData[tabIndex]?.list.sort((a, b) => a.id - b.id) || [];
@@ -49,9 +53,7 @@ function Markets() {
       >
         <Header
           data={marketData}
-          onPress={(i: number) => {
-            setTabIndex(i);
-          }}
+          handleTabChange={handleTabChange}
           currentTabIndex={tabIndex}
         />
         <FlatList
@@ -65,7 +67,11 @@ function Markets() {
             <Footer loading={marketLoading} dataLength={marketData.length} />
           }
           renderItem={({ item }) => (
-            <MarketCard item={item} price={priceDataMap[item.marketName]} />
+            <MarketCard
+              item={item}
+              price={priceDataMap[item.marketName]}
+              dollarSign={DOLLAR_SIGN[marketData[tabIndex].title.toLowerCase()]}
+            />
           )}
         />
       </View>

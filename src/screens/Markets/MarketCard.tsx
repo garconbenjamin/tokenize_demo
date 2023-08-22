@@ -30,8 +30,12 @@ const getPropertyByPrice = (lastPrice: number = 0, openPrice: number = 0) => {
     rotateDeg: priceChange > 0 ? '0deg' : '180deg',
   };
 };
-function MarketCard(props: { item: Symbol; price?: Price }) {
-  const { item, price } = props;
+function MarketCard(props: {
+  item: Symbol;
+  price?: Price;
+  dollarSign: string;
+}) {
+  const { item, price, dollarSign } = props;
   const { currentPrice, priceColor, priceChangeText, rotateDeg, showArrow } =
     getPropertyByPrice(price?.lastPrice, price?.openPrice);
   return (
@@ -74,7 +78,10 @@ function MarketCard(props: { item: Symbol; price?: Price }) {
               alignItems: 'flex-end',
             }}
           >
-            <Text>{currentPrice}</Text>
+            <Text>
+              {dollarSign}
+              {parseFloat(currentPrice)}
+            </Text>
             <Text style={{ color: priceColor }}>
               {priceChangeText}%
               {showArrow && (
