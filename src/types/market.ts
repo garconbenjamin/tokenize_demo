@@ -32,4 +32,4 @@ type Price = {
   volume: number;
   listRoles: null;
 };
-export type {Symbol, Market, Price};
+export type { Symbol, Market, Price };

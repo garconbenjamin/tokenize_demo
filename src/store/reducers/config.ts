@@ -1,7 +1,8 @@
-import {createSlice, current, PayloadAction} from '@reduxjs/toolkit';
-import type {RootState} from '@/store';
+import { createSlice, current, PayloadAction } from '@reduxjs/toolkit';
 
-export type Config = {userAgent?: string; deviceId?: string};
+import type { RootState } from '@/store';
+
+export type Config = { userAgent?: string; deviceId?: string };
 
 const initialState: Config = {
   userAgent: '',
@@ -12,7 +13,7 @@ const configSlice = createSlice({
   name: 'config',
   initialState,
   reducers: {
-    clearConfig: () => ({...initialState}),
+    clearConfig: () => ({ ...initialState }),
     setConfig: (prevDraftState, action: PayloadAction<Partial<Config>>) => {
       return {
         ...current(prevDraftState),
@@ -22,10 +23,10 @@ const configSlice = createSlice({
   },
 });
 
-const {actions} = configSlice;
+const { actions } = configSlice;
 
 const selectConfig = (state: RootState) => state.config;
 
-export {configSlice, actions, selectConfig};
+export { configSlice, actions, selectConfig };
 
 export default configSlice.reducer;

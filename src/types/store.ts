@@ -1,4 +1,4 @@
-import {Action, ThunkAction} from '@reduxjs/toolkit';
+import { Action, ThunkAction } from '@reduxjs/toolkit';
 import store from '@/store';
 
 type AppDispatch = typeof store.dispatch;
@@ -10,4 +10,4 @@ type AppThunk<ReturnType = void> = ThunkAction<
   Action<string>
 >;
 
-export type {AppDispatch, RootState, AppThunk};
+export type { AppDispatch, RootState, AppThunk };

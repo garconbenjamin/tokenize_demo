@@ -14,7 +14,8 @@ import {ThemeProvider} from '@rneui/themed';
 import 'react-native-gesture-handler';
 import theme from '@/theme';
 import store from '@/store';
-
+import {getUniqueId, getUserAgent} from 'react-native-device-info';
+import {setConfig} from '@/store/actions';
 function Root() {
   return (
     <ReduxProvider store={store}>
@@ -25,4 +26,17 @@ function Root() {
   );
 }
 
-AppRegistry.registerComponent(appName, () => Root);
+const runApp = async initialProps => {
+  try {
+    const userAgent = await getUserAgent();
+    const deviceId = await getUniqueId();
+    setConfig({userAgent, deviceId});
+
+    AppRegistry.registerComponent(appName, () => Root);
+    AppRegistry.runApplication(appName, initialProps);
+  } catch (err) {
+    console.log(err);
+  }
+};
+
+AppRegistry.registerRunnable(appName, runApp);

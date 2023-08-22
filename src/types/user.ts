@@ -11,4 +11,4 @@ type User = {
   userType: string;
   token: string;
 };
-export type {User};
+export type { User };

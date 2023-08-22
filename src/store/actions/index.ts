@@ -1,5 +1,4 @@
-import {clearConfig, setConfig} from '@/store/actions/config';
+import { clearConfig, setConfig } from '@/store/actions/config';
+import { clearUser, setUser } from '@/store/actions/user';
 
-import {clearUser, setUser} from '@/store/actions/user';
-
-export {clearUser, setUser, clearConfig, setConfig};
+export { clearUser, setUser, clearConfig, setConfig };

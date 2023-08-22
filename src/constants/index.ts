@@ -11,4 +11,11 @@ const TEST_DATA = {
   password: 'Test#111',
 };
 
-export {HEADERS, TEST_DATA, CAPTCHA};
+const DOLLAR_SIGN: Record<string, string> = {
+  usd: '$',
+  btc: '฿',
+  eth: 'Ξ',
+  sgd: 'S$',
+  xsgd: 'S$',
+};
+export { HEADERS, TEST_DATA, CAPTCHA, DOLLAR_SIGN };

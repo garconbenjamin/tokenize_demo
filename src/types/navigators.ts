@@ -1,6 +1,6 @@
-import type {BottomTabNavigationProp} from '@react-navigation/bottom-tabs';
-import type {NavigatorScreenParams} from '@react-navigation/native';
-import type {StackNavigationProp} from '@react-navigation/stack';
+import type { BottomTabNavigationProp } from '@react-navigation/bottom-tabs';
+import type { NavigatorScreenParams } from '@react-navigation/native';
+import type { StackNavigationProp } from '@react-navigation/stack';
 
 // #region Tab navigation
 
@@ -48,7 +48,7 @@ type RootScreenProps = StackNavigationProp<
 
 // #endregion
 
-export {RootScreenType, TabScreenType};
+export { RootScreenType, TabScreenType };
 
 export type {
   RootStackParamList,
