@@ -2,11 +2,13 @@
 
 Welcome to Tokenize Demo App! This project is a demo app for showing the basic UI and interacting with public API.
 
+
 ## Table of Contents
 
 - [Project Structure](#project-structure)
 - [Prequisties](#prequisties)
 - [Getting Started](#getting-started)
+- [Live Screenshot](#live-screenshots)
 
 ## Project Structure
 
@@ -28,12 +30,12 @@ The project is organized as follows:
         ├── utils               # Utility functions.
         ├── App.tsx             # App.
         ├── i18n.ts             # Localization setup.
-       ├── theme.ts             # Override default react-native-element-ui style.
+        ├── theme.ts            # Override default react-native-element-ui style.
     ├── index.js                # Entry point, providers.
 
 ### App structur
 
-- Before initializing the app, will do some setup work synchronously and asynchronously.
+- Before initializing the app, we will do some setup work synchronously and asynchronously.
 
   - Synchronously:
 
@@ -44,9 +46,9 @@ The project is organized as follows:
   - Asynchronously:
     - Get device info.
 
-- Use different navigator control screen UI with bottom tab or without it.
+- Use different navigators control screen UI with bottom tab or without it.
 
-## Prequisties
+## Prerequisites
 
 - Android Studio and emulator
 - Xcode and simulator
@@ -88,3 +90,15 @@ cd ios && pod install
   # or
   yarn android
 ```
+
+
+
+## Live screenshots
+
+![Demo1]([http://static.runoob.com/images/runoob-logo.png](https://github.com/garconbenjamin/tokenize_demo/blob/master/demo_screenshot/demo1.png?raw=true))
+
+![Demo2]([http://static.runoob.com/images/runoob-logo.png](https://github.com/garconbenjamin/tokenize_demo/blob/master/demo_screenshot/demo2.png?raw=true))
+
+![Demo3]([http://static.runoob.com/images/runoob-logo.png](https://github.com/garconbenjamin/tokenize_demo/blob/master/demo_screenshot/demo3.png?raw=true))
+
+![Demo4]([http://static.runoob.com/images/runoob-logo.png](https://github.com/garconbenjamin/tokenize_demo/blob/master/demo_screenshot/demo4.png?raw=true))
