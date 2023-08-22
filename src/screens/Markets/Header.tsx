@@ -7,10 +7,10 @@ import SearchIcon from '@/images/search_icon.svg';
 import { colorPalette } from '@/theme';
 function Header(props: {
   data: Market[];
-  onPress: (index: number) => void;
+  handleTabChange: (index: number) => void;
   currentTabIndex: number;
 }) {
-  const { data, onPress, currentTabIndex } = props;
+  const { data, handleTabChange, currentTabIndex } = props;
   return (
     <View style={{ marginHorizontal: 10 }}>
       <View
@@ -32,7 +32,11 @@ function Header(props: {
         </Text>
         <SearchIcon fill={colorPalette.gray} />
       </View>
-      <ScrollView horizontal showsHorizontalScrollIndicator={false}>
+      <ScrollView
+        horizontal
+        showsHorizontalScrollIndicator={false}
+        bounces={false}
+      >
         <View style={{ flexDirection: 'row', paddingBottom: 10 }}>
           {data.map(({ title }, i) => {
             const active = currentTabIndex === i;
@@ -46,8 +50,9 @@ function Header(props: {
                   fontWeight: '500',
                   lineHeight: 15.23,
                 }}
-                onPress={() => onPress(i)}
-                style={{ marginHorizontal: 5, minWidth: 32 }}
+                onPress={() => handleTabChange(i)}
+                containerStyle={{ marginHorizontal: 5 }}
+                style={{ minWidth: 32 }}
                 buttonStyle={{
                   paddingTop: 8,
                   paddingBottom: 9,

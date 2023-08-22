@@ -28,6 +28,8 @@ function TabNavigator() {
           fontWeight: '500',
           lineHeight: 15,
         },
+        tabBarItemStyle: { height: 50 },
+        tabBarStyle: { height: 65, paddingTop: 8 },
       }}
       initialRouteName={TabScreenType.MARKETS}
     >
