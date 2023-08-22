@@ -1,32 +1,21 @@
-import React, {useEffect} from 'react';
-
-import {NavigationContainer} from '@react-navigation/native';
-
-import {createStackNavigator} from '@react-navigation/stack';
-import {RootScreenType, RootStackParamList} from '@/types/navigators';
-import Auth from '@/screens/Auth';
+import React from 'react';
+import { NavigationContainer } from '@react-navigation/native';
+import { createStackNavigator } from '@react-navigation/stack';
 import TabNavigator from '@/navigators/Tab';
-import {getUniqueId, getUserAgent} from 'react-native-device-info';
-import {setConfig} from '@/store/actions';
+import Auth from '@/screens/Auth';
+import { RootScreenType, RootStackParamList } from '@/types/navigators';
+
 const RootStack = createStackNavigator<RootStackParamList>();
 
 function App() {
-  useEffect(() => {
-    const intializeConfig = async () => {
-      const userAgent = await getUserAgent();
-      const deviceId = await getUniqueId();
-
-      setConfig({userAgent, deviceId});
-    };
-    intializeConfig();
-  }, []);
   return (
     <NavigationContainer>
       <RootStack.Navigator
         screenOptions={{
           headerShown: false,
         }}
-        id="Root">
+        id="Root"
+      >
         <RootStack.Screen
           name={RootScreenType.AUTHENTICATION}
           component={Auth}
